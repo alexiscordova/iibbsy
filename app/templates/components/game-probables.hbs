@@ -2,21 +2,29 @@
 <div class="teams">
   <div class="team away-team">
     <div class="image-container">
-      <img src="#" width="50" height="50" class="player-photo" />
+      <img src="assets/images/no-photo.png" class="no-photo" />
     </div>
     <div class="player-metadata">
-      <h3 class="team-header">Away Pitcher Name</h3>
-      <p class="metadata">(Wins - Losses, ERA)</p>
+      <h3 class="team-header">
+        <a href={{model.awayProbablePitcherURL}}>
+          {{format-name firstName=model.awayProbablePitcher.first lastName=model.awayProbablePitcher.last}}
+        </a>
+      </h3>
+      <p class="metadata">({{model.awayProbablePitcher.wins}}-{{model.awayProbablePitcher.losses}}, {{model.awayProbablePitcher.era}} ERA)</p>
     </div>
   </div>
 
   <div class="team home-team">
     <div class="image-container">
-      <img src="#" width="50" height="50" class="player-photo" />
+      <img src="assets/images/no-photo.png" class="no-photo" />
     </div>
     <div class="player-metadata">
-      <h3 class="team-header">Home Pitcher Name</h3>
-      <p class="metadata">(Wins - Losses, ERA)</p>
+      <h3 class="team-header">
+        <a href={{model.homeProbablePitcherURL}}>
+          {{format-name firstName=model.homeProbablePitcher.first lastName=model.homeProbablePitcher.last}}
+        </a>
+      </h3>
+      <p class="metadata">({{model.homeProbablePitcher.wins}}-{{model.homeProbablePitcher.losses}}, {{model.homeProbablePitcher.era}} ERA)</p>
     </div>
   </div>
 </div>

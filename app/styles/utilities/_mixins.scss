@@ -1,0 +1,34 @@
+/*
+  Mixins - Description
+  Mixins documentation
+*/
+
+/*
+  Cropped Image Mixin
+*/
+
+%image-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #979797;
+  overflow: hidden;
+}
+
+%image-container-img {
+  position: relative;
+  z-index: 1;
+  top: 25%;
+  left: -2%;
+  width: 105%;
+}
+
+@mixin croppedImage {
+  & {
+    @extend %image-container;
+
+    > .no-photo {
+      @extend %image-container-img
+    }
+  }
+}

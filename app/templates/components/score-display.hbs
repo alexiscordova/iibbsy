@@ -1,27 +1,71 @@
-<thead>
-  <th class="game-status">
-    <h4 class="component-header">7:15 PM PT <i>at AT&amp;T Park in San Francisco, CA</i></h4>
-  </th>
+<thead class="linescore-header">
+  <tr class="linescore-container">
+    <th class="game-status">
+      {{#if (or model.isPreGame model.isPreview)}}
+        <h4 class="component-header">{{model.gameTime}} <i>at {{model.venue}} in {{model.location}}</i></h4>
+      {{else if model.isWarmup}}
+        <h4 class="component-header">Warmup</h4>
+      {{else if model.isInProgress}}
+        <h4 class="component-header">{{model.currentInning}}</h4>
+      {{else if model.isGameCompleted}}
+        <h4 class="component-header">
+          {{#if model.isExtraInnings}}
+            Final/{{model.finalInning}}
+          {{/if}}
+          {{#unless model.isExtraInnings}}
+            Final
+          {{/unless}}
+        </h4>
+      {{/if}}
+    </th>
+    {{#if (or model.isWarmup model.isInProgress model.isGameCompleted)}}
+      <th class="category">R</th>
+      <th class="category">H</th>
+      <th class="category">E</th>
+    {{/if}}
+  </tr>
 </thead>
-<tbody class="teams">
-  <tr class="team away-team">
-    <div class="image-container">
-      <img src="#" width="50" height="50" class="team-logo" />
-    </div>
-    <div class="team-metadata">
-      <h3 class="team-header">Away Team</h3>
-      <p class="metadata">(Wins - Losses)</p>
-    </div>
+<tbody class="opponents">
+  <tr class="team">
+    <td class="away-team">
+      <div class="image-container">
+        {{#if model.awayTeamLogo}}
+          <img src={{model.awayTeamLogo}} class="team-logo" />
+        {{/if}}
+        {{#unless model.awayTeamLogo}}
+          <img src="assets/images/no-photo.png" class="no-logo" />
+        {{/unless}}
+      </div>
+      <div class="team-metadata">
+        <h3 class="team-header">{{model.awayTeamName}}</h3>
+        <p class="metadata">({{model.awayTeamWins}}-{{model.awayTeamLosses}})</p>
+      </div>
+    </td>
+    {{#if (or model.isWarmup model.isInProgress model.isGameCompleted)}}
+      <td class="total runs">{{model.awayTeamRuns}}</td>
+      <td class="total hits">{{model.awayTeamHits}}</td>
+      <td class="total errors">{{model.awayTeamErrors}}</td>
+    {{/if}}
   </tr>
-
-  <tr class="team home-team">
-    <div class="image-container">
-      <img src="#" width="50" height="50" class="team-logo" />
-    </div>
-    <div class="team-metadata">
-      <h3 class="team-header">Home Team</h3>
-      <p class="metadata">(Wins - Losses)</p>
-    </div>
+  <tr class="team">
+    <td class="home-team">
+      <div class="image-container">
+        {{#if model.homeTeamLogo}}
+          <img src={{model.homeTeamLogo}} class="team-logo" />
+        {{/if}}
+        {{#unless model.homeTeamLogo}}
+          <img src="assets/images/no-photo.png" class="no-logo" />
+        {{/unless}}
+      </div>
+      <div class="team-metadata">
+        <h3 class="team-header">{{model.homeTeamName}}</h3>
+        <p class="metadata">({{model.homeTeamWins}}-{{model.homeTeamLosses}})</p>
+      </div>
+    </td>
+    {{#if (or model.isWarmup model.isInProgress model.isGameCompleted)}}
+      <td class="total runs">{{model.homeTeamRuns}}</td>
+      <td class="total hits">{{model.homeTeamHits}}</td>
+      <td class="total errors">{{model.homeTeamErrors}}</td>
+    {{/if}}
   </tr>
-
 </tbody>

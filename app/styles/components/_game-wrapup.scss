@@ -1,0 +1,39 @@
+/*
+  Game Wrapup component
+*/
+
+[data-component="wrapup"] {
+  @extend %flex-column;
+  flex: 1;
+
+  .players {
+    @extend %flex-column;
+    flex: 1;
+    justify-content: space-around;
+  }
+
+  .player {
+    @extend %flex-row;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .player-data {
+    @extend %flex-row;
+    flex: 1;
+    justify-content: space-between;
+    margin-left: 15px;
+  }
+
+  .label {
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  .image-container {
+    width: 30px;
+    height: 30px;
+    @include croppedImage;
+  }
+}

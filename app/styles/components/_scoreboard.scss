@@ -7,9 +7,17 @@
 [data-component="game"] {
   @extend %flex-row;
   padding: 7px 10px 10px;
-  min-height: 180px;
+  min-height: 200px;
   border: 1px solid #979797;
   background-color: $true-white;
+
+  & + & {
+    margin-top: 20px;
+  }
+
+  &:last-child {
+    margin-bottom: 45px;
+  }
 
   .image-container + [class*="metadata"] {
     margin-left: 10px;

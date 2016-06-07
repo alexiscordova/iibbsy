@@ -1,13 +1,17 @@
 <article class="scoreboard">
-  {{game-date}}
-
-  {{!-- #each model as |game| --}}
+  {{#each sortedGames as |game|}}
   <section class="game" data-component="game">
-    {{score-display}}
+    {{score-display model=game}}
 
-    {{game-probables}}
+    {{#if (or game.isPreGame game.isPreview game.isWarmup)}}
+      {{game-probables model=game}}
+    {{else if game.isInProgress}}
+      {{play-by-play model=game}}
+    {{else if game.isGameCompleted}}
+      {{game-wrapup model=game}}
+    {{/if}}
   </section>
-  {{!-- /each --}}
+  {{/each}}
 </article>
 
 {{!-- <div class="demo">

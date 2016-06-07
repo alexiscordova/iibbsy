@@ -1,14 +1,16 @@
 <header class="block-center" role="banner">
-  {{#link-to 'index'}}
-    <img src="#" width="63" height="63" class="site-logo" />
-    <h1 class="site-header">Is It Baseball Season Yet</h1>
+  {{#link-to "index"}}
+    <img src="assets/images/logo.svg" width="78" height="65" class="site-logo" />
+    <h1 class="site-header">{{appName}}</h1>
   {{/link-to}}
 </header>
 
 <main class="block-center">
+  {{game-date currentDate}}
+
   {{outlet}}
 </main>
 
 <footer role="contentinfo">
-  <p class="footer-copy">Is It Baseball Season Yet 2016. A side project by <a href="http://alexiscordova.com">Alexis Córdova</a></p>
+  <p class="footer-copy">{{appName}} {{currentYear}}. A side project by <a href="http://alexiscordova.com">Alexis Córdova</a></p>
 </footer>

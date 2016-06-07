@@ -2,25 +2,65 @@
   Score Display component - Displays the team names, wins and losses, and, if applicable, the score metadata associated with each game.
 
   Depending on the game status state, different content will appear:
-  - Default (Pre-Game): Start time and game location are displayed, as well as the Home Team (with Wins-Losses) and Away Team (with Wins-Losses) will appear. Team Logos will appear to the left of each team name.
-  - In-Progress: The start time and game location from Pre-Game will be replaced with the current inning (e.g., Top 1st, Bottom 3rd). In addition to the team information from Pre-Game, the runs, hits, and errors for each team will display.
-  - Final: The current inning will be replaced with "Final", with an indicator of innings if the game went to extra innings (e.g., "Final" vs "Final/10"). The losing team's text color will lighten, making the winning team's linescore appear to be bolded. An indicator (a left-facing triangle) will also appear next to the winning team's linescore.
+  - Default (Preview):
+  - Pre-Game:
+  - Warmup:
+  - In Progress:
+  - Final:
 */
 
 [data-component="score"] {
   @extend %flex-column;
   flex: 1;
-  padding-right: 10px;
 
-  .teams {
+  .linescore-header {
+    margin-top: -7px;
+    margin-left: -10px;
+    padding-top: 7px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border-bottom: 1px solid $true-black;
+  }
+
+  .linescore-container {
+    @extend %flex-row;
+    flex: 1;
+    .game-status {
+      flex: 2;
+      text-align: left;
+    }
+    .category {
+      width: 75px;
+      font-size: 12px;
+    }
+  }
+
+  .opponents {
     @extend %flex-column;
     flex: 1;
     justify-content: space-around;
   }
-
   .team {
     @extend %flex-row;
     flex: 1;
     align-items: center;
+    .away-team, .home-team {
+      @extend %flex-row;
+      align-items: center;
+      flex: 2;
+    }
+    .total {
+      width: 75px;
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+
+  .image-container {
+    width: 45px;
+    height: 45px;
+    img {
+      width: 100%;
+    }
   }
 }

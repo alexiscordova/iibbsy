@@ -1,8 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: 'table',
-  classNames: ['score'],
+  classNames: ['wrapup'],
   attributeBindings: ['data-component'],
-  'data-component': 'score'
+  'data-component': 'wrapup'
 });

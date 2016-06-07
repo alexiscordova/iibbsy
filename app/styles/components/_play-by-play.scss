@@ -1,0 +1,8 @@
+/*
+  Play-By-Play component
+*/
+
+[data-component="play-by-play"] {
+  @extend %flex-column;
+  flex: 1;
+}
