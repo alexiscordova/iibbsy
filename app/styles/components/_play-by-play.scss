@@ -39,4 +39,9 @@
     flex: 1;
   }
 
+  .last-play {
+    @extend %flex-row;
+    flex: 1;
+    align-items: center;
+  }
 }

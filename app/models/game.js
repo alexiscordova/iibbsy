@@ -108,6 +108,7 @@ export default Model.extend({
   isOnThirdBase: Ember.computed('runnersOnBase', function() {
     return this.get('runnersOnBase.runner_on_3b');
   }),
+  playByPlay: DS.attr(),
   winningPitcher: DS.attr(),
   winningPitcherWins: Ember.computed('winningPitcher', function() {
     return this.get('winningPitcher.wins');
