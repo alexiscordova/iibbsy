@@ -11,7 +11,7 @@ export default Ember.Route.extend({
     Ember.run.later(() => {
       this.store.findAll('game');
       this._reloadScoreData();
-    }, interval)
+    }, interval);
   },
 
   afterModel() {
