@@ -5,4 +5,38 @@
 [data-component="play-by-play"] {
   @extend %flex-column;
   flex: 1;
+  justify-content: space-between;
+
+  .container {
+    @extend %flex-row;
+    flex: 2;
+    justify-content: center;
+  }
+
+  .diamond {
+    @extend %flex-row;
+    flex: 1;
+    margin-top: 20px;
+    margin-left: 20px;
+    .base {
+      width: 30px;
+      height: 30px;
+      transform: rotate(45deg);
+      border: 1px solid $true-black;
+      &.first-base {
+        transform: rotate(45deg) translate(17px, 20px);
+      }
+      &.third-base {
+        transform: rotate(45deg) translate(20px, 17px);
+      }
+      &.active {
+        background-color: yellow;
+      }
+    }
+  }
+
+  .count {
+    flex: 1;
+  }
+
 }

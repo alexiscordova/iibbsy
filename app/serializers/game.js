@@ -84,6 +84,7 @@ export default DS.RESTSerializer.extend({
     homeTeamWins: 'home_win',
     homeTeamLosses: 'home_loss',
     homeProbablePitcher: 'home_probable_pitcher',
+    runnersOnBase: 'runners_on_base',
     winningPitcher: 'winning_pitcher',
     losingPitcher: 'losing_pitcher',
     savePitcher: 'save_pitcher'

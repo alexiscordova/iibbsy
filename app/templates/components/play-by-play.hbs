@@ -1,1 +1,6 @@
-<h4 class="component-header">Play-By-Play</h4>
+<div class="container">
+  <div class="diamond runners">
+    <div class="base third-base {{if model.isOnThirdBase 'active'}}"></div>
+    <div class="base second-base {{if model.isOnSecondBase 'active'}}"></div>
+    <div class="base first-base {{if model.isOnFirstBase 'active'}}"></div>
+  </div>

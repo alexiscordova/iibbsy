@@ -98,6 +98,16 @@ export default Model.extend({
   homeTeamErrors: Ember.computed('linescore', function() {
     return this.get('linescore.e.home');
   }),
+  runnersOnBase: DS.attr(),
+  isOnFirstBase: Ember.computed('runnersOnBase', function() {
+    return this.get('runnersOnBase.runner_on_1b');
+  }),
+  isOnSecondBase: Ember.computed('runnersOnBase', function() {
+    return this.get('runnersOnBase.runner_on_2b');
+  }),
+  isOnThirdBase: Ember.computed('runnersOnBase', function() {
+    return this.get('runnersOnBase.runner_on_3b');
+  }),
   winningPitcher: DS.attr(),
   winningPitcherWins: Ember.computed('winningPitcher', function() {
     return this.get('winningPitcher.wins');
