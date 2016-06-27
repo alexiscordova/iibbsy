@@ -58,6 +58,19 @@ export default Model.extend({
 
     return `http://m.${teamName}.mlb.com/player/${pitcherId}/${pitcherFirstName}-${pitcherLastName}`;
   }),
+  review: DS.attr(),
+  awayManagerChallenges: Ember.computed('review', function() {
+    let awayChallengeRemaining = parseFloat(this.get('review.challenges_away_remaining'));
+
+    return awayChallengeRemaining;
+  }),
+  hasAwayChallengeRemaining: Ember.computed.gt('awayManagerChallenges', 0),
+  homeManagerChallenges: Ember.computed('review', function() {
+    let homeChallengesRemaining = parseFloat(this.get('review.challenges_home_remaining'));
+
+    return homeChallengesRemaining;
+  }),
+  hasHomeChallengesRemaining: Ember.computed.gt('homeManagerChallenges', 0),
   homeTeamName: DS.attr('string'),
   homeTeamAbbrev: DS.attr('string'),
   homeTeamLogo: Ember.computed('homeTeamAbbrev', function() {

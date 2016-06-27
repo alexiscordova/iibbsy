@@ -37,7 +37,12 @@
         {{/unless}}
       </div>
       <div class="team-metadata">
-        <h3 class="team-header">{{model.awayTeamName}}</h3>
+        <h3 class="team-header">
+          {{model.awayTeamName}}
+          {{#if model.isInProgress}}
+            <span class="challenges {{if model.hasAwayChallengeRemaining 'active'}}" title="Remaining manager challenges: {{model.awayManagerChallenges}}"></span>
+          {{/if}}
+        </h3>
         <p class="metadata">({{model.awayTeamWins}}-{{model.awayTeamLosses}})</p>
       </div>
     </td>
@@ -58,7 +63,12 @@
         {{/unless}}
       </div>
       <div class="team-metadata">
-        <h3 class="team-header">{{model.homeTeamName}}</h3>
+        <h3 class="team-header">
+          {{model.homeTeamName}}
+          {{#if model.isInProgress}}
+            <span class="challenges {{if model.hasHomeChallengesRemaining 'active'}}" title="Remaining manager challenges: {{model.homeManagerChallenges}}"></span>
+          {{/if}}
+        </h3>
         <p class="metadata">({{model.homeTeamWins}}-{{model.homeTeamLosses}})</p>
       </div>
     </td>
