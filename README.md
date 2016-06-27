@@ -1,4 +1,4 @@
-# Is It Baseball Season Yet
+# Is It Baseball Season Yet [![Build Status](https://travis-ci.org/alexiscordova/iibbsy.svg?branch=master)](https://travis-ci.org/alexiscordova/iibbsy)
 
 Why yes, yes it is baseball season.
 
