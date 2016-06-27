@@ -108,6 +108,108 @@ export default Model.extend({
   isOnThirdBase: Ember.computed('runnersOnBase', function() {
     return this.get('runnersOnBase.runner_on_3b');
   }),
+  isStrikeOne: DS.attr('boolean'),
+  isStrikeTwo: DS.attr('boolean'),
+  isStrikeThree: DS.attr('boolean'),
+  setStrikeCount: Ember.computed('gameStatus', function() {
+    let strikeCount = this.get('gameStatus.s');
+
+    this.set('isStrikeOne', false);
+    this.set('isStrikeTwo', false);
+    this.set('isStrikeThree', false);
+
+    if (strikeCount === '1') {
+      this.set('isStrikeOne', true);
+    } else if (strikeCount === '2') {
+      this.set('isStrikeOne', true);
+      this.set('isStrikeTwo', true);
+    } else if (strikeCount === '3') {
+      this.set('isStrikeOne', true);
+      this.set('isStrikeTwo', true);
+      this.set('isStrikeThree', true);
+    } else {
+      this.set('isStrikeOne', false);
+      this.set('isStrikeTwo', false);
+      this.set('isStrikeThree', false);
+    }
+  }),
+  hasStrikeCountChanged: Ember.observer('gameStatus', function() {
+    let gameStatus = this.get('gameStatus.status');
+
+    if (gameStatus === 'In Progress') {
+      this.get('setStrikeCount');
+    }
+  }),
+  isBallOne: DS.attr('boolean'),
+  isBallTwo: DS.attr('boolean'),
+  isBallThree: DS.attr('boolean'),
+  isBallFour: DS.attr('boolean'),
+  setBallCount: Ember.computed('gameStatus', function() {
+    let ballCount = this.get('gameStatus.b');
+
+    this.set('isBallOne', false);
+    this.set('isBallTwo', false);
+    this.set('isStrikeThree', false);
+
+    if (ballCount === '1') {
+      this.set('isBallOne', true);
+    } else if (ballCount === '2') {
+      this.set('isBallOne', true);
+      this.set('isBallTwo', true);
+    } else if (ballCount === '3') {
+      this.set('isBallOne', true);
+      this.set('isBallTwo', true);
+      this.set('isBallThree', true);
+    } else if (ballCount === '4') {
+      this.set('isBallOne', true);
+      this.set('isBallTwo', true);
+      this.set('isBallThree', true);
+    } else {
+      this.set('isBallOne', false);
+      this.set('isBallTwo', false);
+      this.set('isBallThree', false);
+      this.set('isBallFour', false);
+    }
+  }),
+  hasBallCountChanged: Ember.observer('gameStatus', function() {
+    let gameStatus = this.get('gameStatus.status');
+
+    if (gameStatus === 'In Progress') {
+      this.get('setBallCount');
+    }
+  }),
+  isOutOne: DS.attr('boolean'),
+  isOutTwo: DS.attr('boolean'),
+  isOutThree: DS.attr('boolean'),
+  setOutCount: Ember.computed('gameStatus', function() {
+    let outCount = this.get('gameStatus.o');
+
+    this.set('isOutOne', false);
+    this.set('isOutTwo', false);
+    this.set('isOutThree', false);
+
+    if (outCount === '1') {
+      this.set('isOutOne', true);
+    } else if (outCount === '2') {
+      this.set('isOutOne', true);
+      this.set('isOutTwo', true);
+    } else if (outCount === '3') {
+      this.set('isOutOne', true);
+      this.set('isOutTwo', true);
+      this.set('isOutThree', true);
+    } else {
+      this.set('isOutOne', false);
+      this.set('isOutTwo', false);
+      this.set('isOutThree', false);
+    }
+  }),
+  hasOutCountChanged: Ember.observer('gameStatus', function() {
+    let gameStatus = this.get('gameStatus.status');
+
+    if (gameStatus === 'In Progress') {
+      this.get('setOutCount');
+    }
+  }),
   playByPlay: DS.attr(),
   winningPitcher: DS.attr(),
   winningPitcherWins: Ember.computed('winningPitcher', function() {

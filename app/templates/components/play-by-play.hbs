@@ -4,6 +4,38 @@
     <div class="base second-base {{if model.isOnSecondBase 'active'}}"></div>
     <div class="base first-base {{if model.isOnFirstBase 'active'}}"></div>
   </div>
+
+  <div class="at-bat-count">
+    <div class="ball-count">
+      <h4 class="label count-label">Balls</h4>
+      <div class="count-totals">
+        <span class="count ball {{if model.isBallOne 'active'}}"></span>
+        <span class="count ball {{if model.isBallTwo 'active'}}"></span>
+        <span class="count ball {{if model.isBallThree 'active'}}"></span>
+        <span class="count ball {{if model.isBallFour 'active'}}"></span>
+      </div>
+    </div>
+
+    <div class="strike-count">
+      <h4 class="label count-label">Strikes</h4>
+      <div class="count-totals">
+        <span class="count strike {{if model.isStrikeOne 'active'}}"></span>
+        <span class="count strike {{if model.isStrikeTwo 'active'}}"></span>
+        <span class="count strike {{if model.isStrikeThree 'active'}}"></span>
+      </div>
+    </div>
+
+    <div class="out-count">
+      <h4 class="label count-label">Outs</h4>
+      <div class="out-totals">
+        <span class="count out {{if model.isOutOne 'active'}}"></span>
+        <span class="count out {{if model.isOutTwo 'active'}}"></span>
+        <span class="count out {{if model.isOutThree 'active'}}"></span>
+      </div>
+    </div>
+  </div>
+
+</div>
 <div class="last-play">
   <p class="copy">
     <strong>Last Play</strong>: {{model.playByPlay.last}}

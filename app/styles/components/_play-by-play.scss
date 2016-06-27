@@ -39,8 +39,41 @@
     }
   }
 
-  .count {
+  .at-bat-count {
+    @extend %flex-column;
     flex: 1;
+
+    [class*="-count"] {
+      @extend %flex-row;
+      flex: 2;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .count-label {
+      flex: 1;
+    }
+
+    [class*="-totals"] {
+      @extend %flex-row;
+      flex: 1;
+      justify-content: flex-start;
+    }
+
+    .count {
+      width: 15px;
+      height: 15px;
+      border: 1px solid gray;
+      border-radius: 50%;
+      background-color: lightGray;
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+      &.active {
+        border-color: darken(red, 10%);
+        background-color: red;
+      }
+    }
   }
 
   .last-play {
