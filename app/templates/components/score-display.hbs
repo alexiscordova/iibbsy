@@ -7,6 +7,10 @@
         <h4 class="component-header">Warmup</h4>
       {{else if model.isInProgress}}
         <h4 class="component-header">{{model.currentInning}}</h4>
+      {{else if model.isCurrentlyDelayed}}
+        <h4 class="component-header">
+          {{model.currentInning}} - <em>Delayed</em>
+        </h4>
       {{else if model.isGameCompleted}}
         <h4 class="component-header">
           {{#if model.isExtraInnings}}

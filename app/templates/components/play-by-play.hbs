@@ -41,3 +41,12 @@
     <strong>Last Play</strong>: {{model.playByPlay.last}}
   </p>
 </div>
+  <div class="last-play">
+    <p class="copy">
+      {{#if model.isCurrentlyDelayed}}
+        <strong>Delay</strong>: {{model.gameStatus.note}}
+      {{else}}
+        <strong>Last Play</strong>: {{model.playByPlay.last}}
+      {{/if}}
+    </p>
+  </div>
