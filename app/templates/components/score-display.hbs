@@ -11,6 +11,10 @@
         <h4 class="component-header">
           {{model.currentInning}} - <em>Delayed</em>
         </h4>
+      {{else if model.isBeingChallenged}}
+        <h4 class="component-header">
+          {{model.currentInning}} - <em>Managers Challenge</em>
+        </h4>
       {{else if model.isGameCompleted}}
         <h4 class="component-header">
           {{#if model.isExtraInnings}}

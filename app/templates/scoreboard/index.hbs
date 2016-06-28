@@ -5,7 +5,7 @@
 
     {{#if (or game.isPreGame game.isPreview game.isWarmup)}}
       {{game-probables model=game}}
-    {{else if (or game.isInProgress game.isCurrentlyDelayed)}}
+    {{else if (or game.isInProgress game.isBeingChallenged game.isCurrentlyDelayed)}}
       {{play-by-play model=game}}
     {{else if game.isGameCompleted}}
       {{game-wrapup model=game}}

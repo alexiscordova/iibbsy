@@ -45,6 +45,8 @@
     <p class="copy">
       {{#if model.isCurrentlyDelayed}}
         <strong>Delay</strong>: {{model.gameStatus.note}}
+      {{else if model.isBeingChallenged}}
+        <strong>Challenge</strong>: {{model.gameStatus.note}}
       {{else}}
         <strong>Last Play</strong>: {{model.playByPlay.last}}
       {{/if}}

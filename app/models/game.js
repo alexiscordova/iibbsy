@@ -27,6 +27,7 @@ export default Model.extend({
   isDelayed: Ember.computed.equal('gameStatus.status', 'Delayed'),
   isDelayedStart: Ember.computed.equal('gameStatus.status', 'Delayed Start'),
   isCurrentlyDelayed: Ember.computed.or('isDelayed', 'isDelayedStart'),
+  isBeingChallenged: Ember.computed.equal('gameStatus.status', 'Manager Challenge'),
   isFinal: Ember.computed.equal('gameStatus.status', 'Final'),
   isGameOver: Ember.computed.equal('gameStatus.status', 'Game Over'),
   isGameCompleted: Ember.computed.or('isFinal', 'isGameOver'),
