@@ -1,0 +1,30 @@
+<h4 class="component-header">Due Up</h4>
+<ul class="list-unstyled due-up-batters">
+  <li class="batter">
+    <div class="image-container">
+      <img src="assets/images/no-photo.png" class="no-photo" />
+    </div>
+    <div class="player-data">
+      <p class="copy">{{format-name firstName=game.dueUpBatter.first lastName=game.dueUpBatter.last}}</p>
+      <span class="metadata">{{game.dueUpBatter.h}}-{{game.dueUpBatter.ab}}, {{game.dueUpBatter.avg}}/{{game.dueUpBatter.obp}}/{{game.dueUpBatter.slg}}</span>
+    </div>
+  </li>
+  <li class="batter">
+    <div class="image-container">
+      <img src="assets/images/no-photo.png" class="no-photo" />
+    </div>
+    <div class="player-data">
+      <p class="copy">{{format-name firstName=game.dueUpOnDeck.first lastName=game.dueUpOnDeck.last}}</p>
+      <span class="metadata">{{game.dueUpOnDeck.h}}-{{game.dueUpOnDeck.ab}}, {{game.dueUpOnDeck.avg}}/{{game.dueUpOnDeck.obp}}/{{game.dueUpOnDeck.slg}}</span>
+    </div>
+  </li>
+  <li class="batter">
+    <div class="image-container">
+      <img src="assets/images/no-photo.png" class="no-photo" />
+    </div>
+    <div class="player-data">
+      <p class="copy">{{format-name firstName=game.dueUpInHole.first lastName=game.dueUpInHole.last}}</p>
+      <span class="metadata">{{game.dueUpInHole.h}}-{{game.dueUpInHole.ab}}, {{game.dueUpInHole.avg}}/{{game.dueUpInHole.obp}}/{{game.dueUpInHole.slg}}</span>
+    </div>
+  </li>
+</ul>

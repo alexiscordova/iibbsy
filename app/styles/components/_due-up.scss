@@ -1,0 +1,30 @@
+/*
+  Due Up Component
+*/
+
+[data-component="due-up"] {
+  @extend %flex-column;
+  flex: 1;
+
+  .due-up-batters {
+    @extend %flex-column;
+    flex: 1;
+    justify-content: space-around;
+  }
+
+  .batter {
+    @extend %flex-row;
+    flex: 1;
+    align-items: center;
+
+    .player-data {
+      margin-left: 15px;
+    }
+  }
+
+  .image-container {
+    width: 30px;
+    height: 30px;
+    @include croppedImage;
+  }
+}
