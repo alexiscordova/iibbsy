@@ -41,6 +41,9 @@ export default Model.extend({
 
       return `${inningState} ${currentInning}`;
   }),
+  isMiddleInning: Ember.computed.equal('gameStatus.inning_state', 'Middle'),
+  isEndInning: Ember.computed.equal('gameStatus.inning_state', 'End'),
+  isSideRetired: Ember.computed.or('isMiddleInning', 'isEndInning'),
   awayTeamName: DS.attr('string'),
   awayTeamAbbrev: DS.attr('string'),
   awayTeamLogo: Ember.computed('awayTeamAbbrev', function() {
@@ -228,6 +231,9 @@ export default Model.extend({
     }
   }),
   playByPlay: DS.attr(),
+  dueUpBatter: DS.attr(),
+  dueUpOnDeck: DS.attr(),
+  dueUpInHole: DS.attr(),
   winningPitcher: DS.attr(),
   winningPitcherWins: Ember.computed('winningPitcher', function() {
     return this.get('winningPitcher.wins');
