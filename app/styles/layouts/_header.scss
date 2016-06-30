@@ -10,7 +10,11 @@
     align-items: center;
   }
 
-  .site-logo + .site-header {
-    margin-left: 15px;
+  .site-logo {
+    width: 78px;
+    height: 65px;
+    & + .site-header {
+      margin-left: 15px;
+    }
   }
 }
