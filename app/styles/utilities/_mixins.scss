@@ -28,7 +28,42 @@
     @extend %image-container;
 
     > img {
-      @extend %avatar
+      @extend %avatar;
     }
+  }
+}
+
+/*
+  Breakpoints Mixin - Programmatically create media queries based on natural-language declarations. Breakpoint values are controlled by $screen-md and $screen-lg variables, declared inside a $breakpoints Sass $map.
+
+  Because CSS is declared mobile first, no $screen-sm variable is required.
+
+  Accepted $name parameters:
+    medium: For tablet-sized media queries, set to a minimum width of 640px
+    large: For desktop-sized media queries, set to a minimum width of 1024px
+*/
+
+/*
+ Per the W3C, relative units in media queries are based on the initial value of :root,
+ which is 16px, and not any subsequent declaration.
+ http://www.w3.org/TR/css3-mediaqueries/#units
+*/
+
+$screen-md: 40em; // 640px
+$screen-lg: 64em; // 1024px
+
+$breakpoints: (
+  medium: $screen-md,
+  large: $screen-lg
+);
+
+@mixin breakpoint($name) {
+  @if map-has-key($breakpoints, $name) {
+    @media only screen and (min-width: map-get($breakpoints, $name)) {
+      @content;
+    }
+  }
+  @else {
+    @warn 'Not a valid breakpoint: ' + $name;
   }
 }
