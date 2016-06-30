@@ -1,32 +1,15 @@
 <article class="scoreboard">
   {{#each sortedGames as |game|}}
-  <section class="game" data-component="game">
-    {{score-display model=game}}
+    <section class="game" data-component="game">
+      {{score-display model=game}}
 
-    {{#if (or game.isPreGame game.isPreview game.isWarmup)}}
-      {{game-probables model=game}}
-    {{else if (or game.isInProgress game.isBeingChallenged game.isCurrentlyDelayed)}}
-      {{play-by-play model=game}}
-    {{else if game.isGameCompleted}}
-      {{game-wrapup model=game}}
-    {{/if}}
-  </section>
+      {{#if (or game.isPreGame game.isPreview game.isWarmup)}}
+        {{game-probables model=game}}
+      {{else if (or game.isInProgress game.isBeingChallenged game.isCurrentlyDelayed)}}
+        {{play-by-play model=game}}
+      {{else if game.isGameCompleted}}
+        {{game-wrapup model=game}}
+      {{/if}}
+    </section>
   {{/each}}
 </article>
-
-{{!-- <div class="demo">
-  <h1 class="site-header">Site Header</h1>
-  <h2 class="page-header">Page Header</h2>
-  <h3 class="team-header">Team Header</h3>
-  <h4 class="component-header">Component Header</h4>
-  <h5 class="label">Label</h5>
-  <h6 class="footer-copy">Footer copy</h6>
-  <p class="copy">Body copy. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  <p class="copy">Body copy. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  <small class="metadata">Metadata (Thing - Thing)</small>
-  <p class="copy">
-    <abbr class="abbr" title="Abbreviation">ABBR</abbr> in copy
-  </p>
-  <abbr class="abbr" title="Abbreviation">ABBR</abbr>
-  <button class="btn">Button</button>
-</div> --}}
