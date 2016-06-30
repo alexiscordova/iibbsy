@@ -1,6 +1,6 @@
 // Type Setting
 
-// Base type
+// Default type
 $base-font-family: Helvetica, Arial, sans-serif;
 
 // Bold type
@@ -39,12 +39,20 @@ $text-font-size: 1.4rem;
 // Small copy
 $small-font-size: 1.2rem;
 
-// Typography
+// Global settings
 html {
   font-family: $base-font-family;
   font-size: 62.5%; // Sets base font size to roughly 10px, allowing for base10 rem declarations
 }
 
+/*
+ $typography:
+  A Sass $map with keys relating to the type usage, and values of Sass $lists that contain the
+  relevant properties.
+
+  Property order: font-size, line-height, font-weight. If any of these are not applicable,
+  null must be declared.
+*/
 $typography: (
   heading-site: ($h1-font-size, $h1-line-height, $h1-font-weight),
   heading-page: ($h2-font-size, $h2-line-height, $h2-font-weight),
@@ -56,6 +64,15 @@ $typography: (
   text-metadata: ($small-font-size, null, null, null),
   text-abbr: (inherit, null, null, null)
 );
+
+/*
+  Type-setting loop:
+    Loops through `$map` to set class names and related CSS properties.
+
+    $typography: Source $map
+    $class-name: Key from $typography, sets class name
+    $property: Property from $typography, set through specific $list index
+*/
 @each $class-name, $property in $typography {
   .#{$class-name} {
     font-size: nth($property, 1);
