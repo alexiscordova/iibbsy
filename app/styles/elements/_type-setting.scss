@@ -42,39 +42,36 @@ $small-font-size: 1.2rem;
 // Typography
 html {
   font-family: $base-font-family;
+  font-size: 62.5%; // Sets base font size to roughly 10px, allowing for base10 rem declarations
 }
 
-.copy + .copy {
-  margin-top: 10px;
+$typography: (
+  heading-site: ($h1-font-size, $h1-line-height, $h1-font-weight),
+  heading-page: ($h2-font-size, $h2-line-height, $h2-font-weight),
+  heading-small: ($h3-font-size, $h3-line-height, $h3-font-weight),
+  heading-component: ($h4-font-size, $h4-line-height, $h4-font-weight),
+  text-label: ($h5-font-size, $h5-line-height, $h5-font-weight),
+  text-footer: ($h6-font-size, $h6-line-height, $h6-font-weight),
+  text-content: ($text-font-size, null, null, null),
+  text-metadata: ($small-font-size, null, null, null),
+  text-abbr: (inherit, null, null, null)
+);
+@each $class-name, $property in $typography {
+  .#{$class-name} {
+    font-size: nth($property, 1);
+    line-height: nth($property, 2);
+    font-weight: nth($property, 3);
+  }
 }
 
-abbr[title] {
+.text-abbr[title] {
   cursor: help;
   text-decoration: none;
   border-bottom: 1px dashed;
 }
 
-.btn {
-  cursor: pointer;
-}
-
-$typography: (
-  site-header: ($h1-font-size, $h1-line-height, $h1-font-weight),
-  page-header: ($h2-font-size, $h2-line-height, $h2-font-weight),
-  team-header: ($h3-font-size, $h3-line-height, $h3-font-weight),
-  component-header: ($h4-font-size, $h4-line-height, $h4-font-weight),
-  label: ($h5-font-size, $h5-line-height, $h5-font-weight),
-  footer-copy: ($h6-font-size, $h6-line-height, $h6-font-weight),
-  copy: ($text-font-size, null, null, null),
-  metadata: ($small-font-size, null, null, null),
-  abbr: (inherit, null, null, null),
-  btn: ($text-font-size, inherit, null, null)
-);
-
-@each $element, $value in $typography {
-  .#{$element} {
-    font-size: nth($value, 1);
-    line-height: nth($value, 2);
-    font-weight: nth($value, 3);
-  }
+b,
+strong {
+  font-family: $bold-font-family;
+  font-weight: $bold-font-weight;
 }
