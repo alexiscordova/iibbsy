@@ -11,6 +11,7 @@
   'base/colors',
   'base/main',
   'base/links',
+  'base/lists',
   'base/typography-reset';
 
 // Layouts
@@ -20,7 +21,8 @@
 
 // Elements
 @import
-  'elements/type-setting';
+  'elements/type-setting',
+  'elements/images';
 
 // Components
 @import
