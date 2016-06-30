@@ -10,7 +10,7 @@
 
     <div class="at-bat-count">
       <div class="ball-count">
-        <h4 class="label count-label">Balls</h4>
+        <h4 class="text-label count-label">Balls</h4>
         <div class="count-totals">
           <span class="count ball {{if model.isBallOne 'active'}}"></span>
           <span class="count ball {{if model.isBallTwo 'active'}}"></span>
@@ -20,7 +20,7 @@
       </div>
 
       <div class="strike-count">
-        <h4 class="label count-label">Strikes</h4>
+        <h4 class="text-label count-label">Strikes</h4>
         <div class="count-totals">
           <span class="count strike {{if model.isStrikeOne 'active'}}"></span>
           <span class="count strike {{if model.isStrikeTwo 'active'}}"></span>
@@ -29,7 +29,7 @@
       </div>
 
       <div class="out-count">
-        <h4 class="label count-label">Outs</h4>
+        <h4 class="text-label count-label">Outs</h4>
         <div class="out-totals">
           <span class="count out {{if model.isOutOne 'active'}}"></span>
           <span class="count out {{if model.isOutTwo 'active'}}"></span>
@@ -40,7 +40,7 @@
 
   </div>
   <div class="last-play">
-    <p class="copy">
+    <p class="text-content">
       {{#if model.isCurrentlyDelayed}}
         <strong>Delay</strong>: {{model.gameStatus.note}}
       {{else if model.isBeingChallenged}}

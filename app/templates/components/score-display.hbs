@@ -2,21 +2,21 @@
   <tr class="linescore-container">
     <th class="game-status">
       {{#if (or model.isPreGame model.isPreview)}}
-        <h4 class="component-header">{{model.gameTime}} <i>at {{model.venue}} in {{model.location}}</i></h4>
+        <h4 class="heading-component">{{model.gameTime}} <i>at {{model.venue}} in {{model.location}}</i></h4>
       {{else if model.isWarmup}}
-        <h4 class="component-header">Warmup</h4>
+        <h4 class="heading-component">Warmup</h4>
       {{else if model.isInProgress}}
-        <h4 class="component-header">{{model.currentInning}}</h4>
+        <h4 class="heading-component">{{model.currentInning}}</h4>
       {{else if model.isCurrentlyDelayed}}
-        <h4 class="component-header">
+        <h4 class="heading-component">
           {{model.currentInning}} - <em>Delayed</em>
         </h4>
       {{else if model.isBeingChallenged}}
-        <h4 class="component-header">
+        <h4 class="heading-component">
           {{model.currentInning}} - <em>Managers Challenge</em>
         </h4>
       {{else if model.isGameCompleted}}
-        <h4 class="component-header">
+        <h4 class="heading-component">
           {{#if model.isExtraInnings}}
             Final/{{model.finalInning}}
           {{/if}}
@@ -45,13 +45,13 @@
         {{/unless}}
       </div>
       <div class="team-metadata">
-        <h3 class="team-header">
+        <h3 class="heading-small">
           {{model.awayTeamName}}
           {{#if model.isInProgress}}
             <span class="challenges {{if model.hasAwayChallengeRemaining 'active'}}" title="Remaining manager challenges: {{model.awayManagerChallenges}}"></span>
           {{/if}}
         </h3>
-        <p class="metadata">({{model.awayTeamWins}}-{{model.awayTeamLosses}})</p>
+        <p class="text-metadata">({{model.awayTeamWins}}-{{model.awayTeamLosses}})</p>
       </div>
     </td>
     {{#if (or model.isWarmup model.isInProgress model.isGameCompleted)}}
@@ -71,13 +71,13 @@
         {{/unless}}
       </div>
       <div class="team-metadata">
-        <h3 class="team-header">
+        <h3 class="heading-small">
           {{model.homeTeamName}}
           {{#if model.isInProgress}}
             <span class="challenges {{if model.hasHomeChallengesRemaining 'active'}}" title="Remaining manager challenges: {{model.homeManagerChallenges}}"></span>
           {{/if}}
         </h3>
-        <p class="metadata">({{model.homeTeamWins}}-{{model.homeTeamLosses}})</p>
+        <p class="text-metadata">({{model.homeTeamWins}}-{{model.homeTeamLosses}})</p>
       </div>
     </td>
     {{#if (or model.isWarmup model.isInProgress model.isGameCompleted)}}
