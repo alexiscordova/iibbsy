@@ -12,3 +12,11 @@
   flex-basis: 100%;
 }
 
+// Display classes
+.small-hidden {
+  display: none !important;
+
+  @include breakpoint(medium) {
+    display: flex !important;
+  }
+}
