@@ -1,39 +1,55 @@
 /*
-  Game Wrapup component
+  Game Wrapup component – Displays the winning, losing, and (if applicable) save pitchers of the specific game, as well as their season win-loss record, ERA, and (if applicable), saves count.
 */
 
+// Component
 [data-component="wrapup"] {
   @extend %flex-column;
-  flex: 1;
+  flex: 1 1 100%;
+  padding-right: 10px;
+  padding-left: 10px;
+  @include breakpoint(medium) {
+    flex-basis: 0;
+  }
 
+  // Container for winning, losing, and save pitcher
   .players {
     @extend %flex-column;
     flex: 1;
-    justify-content: space-around;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    @include breakpoint(medium) {
+      justify-content: space-around;
+    }
   }
 
+  // Individual pitchers of record
+  [class*="-pitcher"]:not(:last-child) {
+    margin-bottom: 10px;
+    @include breakpoint(medium) {
+      margin-bottom: 0;
+    }
+  }
+
+  // Container for pitcher's avatar and metadata
   .player {
+    @extend %flex-row;
+    flex: 1;
+    & > .avatar {
+      margin-right: 10px;
+    }
+  }
+
+  // Container for pitcher's metadata
+  .player-data {
     @extend %flex-row;
     flex: 1;
     align-items: center;
     justify-content: space-between;
   }
 
-  .player-data {
-    @extend %flex-row;
-    flex: 1;
-    justify-content: space-between;
-    margin-left: 15px;
-  }
-
-  .label {
-    margin-bottom: 5px;
-    text-transform: uppercase;
-  }
-
-  .image-container {
-    width: 30px;
-    height: 30px;
-    @include croppedImage;
+  // Pitcher avatar – Hidden on small via class
+  .avatar {
+    @include croppedImage(30px);
   }
 }

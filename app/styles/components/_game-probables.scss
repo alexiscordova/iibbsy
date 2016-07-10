@@ -1,31 +1,54 @@
 /*
-  Game Probables component - Displays the probable starting pitchers, along with their wins, losses, and ERA, for the specific game.
+  Game Probables component - Displays the probable starting pitchers–along with their wins, losses, and ERA–for the specific game.
 
-  The Game Probables component displays the Pitchers Name (.team-header) and Wins, Losses, and ERA (.metadata). While the type styles are inherited from the type-setting element, the general layout of the component is set here.
+  While the type styles are inherited from the type-setting element, the general layout of the component is set here.
 */
 
+// Component
 [data-component="probables"] {
   @extend %flex-column;
   flex: 1;
+  flex-basis: 100%;
+  padding-right: 10px;
+  padding-left: 10px;
+  @include breakpoint(medium) {
+    flex-basis: 0;
+  }
 
   // Header containing component title
   .probables-header {
     padding: 5px 0;
   }
 
-  .teams {
-    @extend %flex-column;
+  // Container for both probable pitchers
+  .probable-pitchers {
+    @extend %flex-row;
     flex: 1;
-    justify-content: space-around;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    @include breakpoint(medium) {
+      flex-wrap: wrap;
+      padding: 0;
+    }
   }
 
-  .team {
+  // Individual probable pitcher
+  [class*="-team"] {
     @extend %flex-row;
     flex: 1;
     align-items: center;
+    justify-content: space-between;
+    @include breakpoint(medium) {
+      flex-basis: 100%;
+      justify-content: flex-start;
+      & > .avatar {
+        margin-right: 10px;
+      }
+    }
   }
 
-  .image-container {
+  // Pitcher avatar – Hidden on small via class
+  .avatar {
     @include croppedImage;
   }
 }

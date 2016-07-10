@@ -1,74 +1,145 @@
 /*
-  Play-By-Play component
+  Play-By-Play component - Displays the count (balls, strikes, and outs) for the current batter, as well as the bases which are currently occupied by runners. On medium and higher viewports, a description of the last play is displayed.
+
+  During certain game states, additional components will be nested inside the play-by-play component.
 */
 
+// Component
 [data-component="play-by-play"] {
   @extend %flex-column;
-  flex: 1;
-  justify-content: space-between;
-
-  .container {
-    @extend %flex-row;
-    flex: 2;
-    justify-content: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  flex: 1 1 100%;
+  padding-right: 10px;
+  padding-left: 10px;
+  @include breakpoint(medium) {
+    flex-basis: 0;
   }
 
+  // Container for diamond and count
+  .container {
+    @extend %flex-row;
+    flex: 3 1 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    @include breakpoint(medium) {
+      flex-basis: 0;
+    }
+  }
+
+  // Baseball diamond made up of three bases
   .diamond {
     @extend %flex-row;
     flex: 1;
-    margin-top: -35px;
-    margin-left: -35px;
     justify-content: center;
     align-items: center;
+    @include breakpoint(medium) {
+      margin-top: -15px;
+    }
+    @include breakpoint(large) {
+      flex: 1.25;
+    }
+
+    // All individual bases
     .base {
-      width: 30px;
-      height: 30px;
+      margin-top: -20px;
+      width: 20px;
+      height: 20px;
       transform: rotate(45deg);
       border: 1px solid $true-black;
+      @include breakpoint(medium) {
+        width: 30px;
+        height: 30px;
+      }
+
+      // First base
       &.first-base {
-        transform: rotate(45deg) translate(17px, 20px);
+        transform: rotate(45deg) translate(12px, 14px);
+        @include breakpoint(medium) {
+          transform: rotate(45deg) translate(17px, 20px);
+        }
       }
+
+      // Third base
       &.third-base {
-        transform: rotate(45deg) translate(20px, 17px);
+        margin-left: -20px;
+        transform: rotate(45deg) translate(14px, 12px);
+        @include breakpoint(medium) {
+          transform: rotate(45deg) translate(20px, 17px);
+        }
       }
-      &.active {
+
+      // Runner on-base indicator
+      &.on-base {
         background-color: yellow;
       }
     }
   }
 
+  // Count (balls, strikes, outs) for the current batter
   .at-bat-count {
-    @extend %flex-column;
+    @extend %flex-row;
     flex: 1;
 
+    // Container for count labels and count totals
     [class*="-count"] {
       @extend %flex-row;
-      flex: 2;
-      align-items: center;
-      justify-content: space-between;
+      flex: 1;
+      @include breakpoint(large) {
+        flex: 2;
+        max-width: 180px;
+      }
     }
 
+    // Container for count labels
+    .count-labels {
+      @extend %flex-column;
+      flex: 0.85;
+      justify-content: space-around;
+      @include breakpoint(large) {
+        flex: 0.5;
+      }
+    }
+
+    // Individual count label
     .count-label {
-      flex: 1;
+      font-size: 1.2rem;
+      @include breakpoint(medium) {
+        font-size: 1.4rem;
+      }
     }
 
-    [class*="-totals"] {
-      @extend %flex-row;
+    // Container for count totals
+    .count-totals {
+      @extend %flex-column;
       flex: 1;
-      justify-content: flex-start;
+
+      // Container for each type of count item: balls, strikes, outs
+      [class*="-total"] {
+        @extend %flex-row;
+        flex: 1;
+        align-items: center;
+      }
     }
 
+    // Indicator for each count type
     .count {
-      width: 15px;
-      height: 15px;
+      width: 10px;
+      height: 10px;
       border: 1px solid gray;
       border-radius: 50%;
       background-color: lightGray;
-      &:not(:last-child) {
-        margin-right: 10px;
+      @include breakpoint(medium) {
+        width: 15px;
+        height: 15px;
       }
+
+      &:not(:last-child) {
+        margin-right: 6px;
+        @include breakpoint(large) {
+          margin-right: 10px;
+        }
+      }
+
+      // Active indicator for each count type
       &.active {
         border-color: darken(red, 10%);
         background-color: red;
@@ -76,10 +147,13 @@
     }
   }
 
+  // Text for last play
   .last-play {
     @extend %flex-row;
     flex: 1;
-    align-items: center;
-    margin-top: 10px;
+    margin-bottom: 10px;
+    max-height: 60px;
+    overflow-y: auto;
+    -webkit-overflow-scroll: touch;
   }
 }

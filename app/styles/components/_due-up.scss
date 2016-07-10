@@ -2,6 +2,7 @@
   Due Up Component
 */
 
+// Component
 [data-component="due-up"] {
   @extend %flex-column;
   flex: 1;
@@ -14,22 +15,41 @@
   .due-up-batters {
     @extend %flex-column;
     flex: 1;
-    justify-content: space-around;
+    padding-top: 5px;
+    padding-bottom: 10px;
   }
 
   .batter {
     @extend %flex-row;
     flex: 1;
     align-items: center;
-
-    .player-data {
-      margin-left: 15px;
+    align-content: space-between;
+    & > .avatar {
+      margin-right: 10px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 10px;
+      @include breakpoint(medium) {
+        margin: 0;
+      }
     }
   }
 
-  .image-container {
-    width: 30px;
-    height: 30px;
-    @include croppedImage;
+  .player-data {
+    @extend %flex-row;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    @include breakpoint(medium) {
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      p {
+        flex-basis: 100%;
+      }
+    }
+  }
+
+  .avatar {
+    @include croppedImage(40px);
   }
 }
