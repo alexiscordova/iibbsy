@@ -39,6 +39,12 @@ $text-font-size: 1.4rem;
 // Small copy
 $small-font-size: 1.2rem;
 
+// Placeholders
+%type-bold {
+  font-family: $bold-font-family;
+  font-weight: $bold-font-weight;
+}
+
 // Global settings
 html {
   font-family: $base-font-family;
@@ -84,11 +90,14 @@ $typography: (
 .text-abbr[title] {
   cursor: help;
   text-decoration: none;
-  border-bottom: 1px dashed;
 }
 
 b,
 strong {
-  font-family: $bold-font-family;
-  font-weight: $bold-font-weight;
+  @extend %type-bold;
+}
+
+// Tyopgraphic Utility Classes
+.text-bold {
+  @extend %type-bold;
 }
