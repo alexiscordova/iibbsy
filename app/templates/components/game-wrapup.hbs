@@ -6,11 +6,12 @@
         <img src="assets/images/no-photo.png" class="no-photo" />
       </div>
       <div class="player-data">
-        <p class="text-content">{{format-name firstName=model.winningPitcher.first lastName=model.winningPitcher.last}}</p>
-        <span class="text-metadata">({{model.winningPitcherWins}}-{{model.winningPitcherLosses}}, {{model.winningPitcherERA}} ERA)</span>
+        <p class="text-content">{{format-name firstName=game.winningPitcher.first lastName=game.winningPitcher.last}}</p>
+        <span class="text-metadata">({{game.winningPitcherWins}}-{{game.winningPitcherLosses}}, {{game.winningPitcherERA}} ERA)</span>
       </div>
     </div>
   </div>
+
   <div class="losing-pitcher">
     <h5 class="text-label">Loss</h5>
     <div class="player">
@@ -18,12 +19,13 @@
         <img src="assets/images/no-photo.png" class="no-photo" />
       </div>
       <div class="player-data">
-        <p class="text-content">{{format-name firstName=model.losingPitcher.first lastName=model.losingPitcher.last}}</p>
-        <span class="text-metadata">({{model.losingPitcherWins}}-{{model.losingPitcherLosses}}, {{model.losingPitcherERA}} ERA)</span>
+        <p class="text-content">{{format-name firstName=game.losingPitcher.first lastName=game.losingPitcher.last}}</p>
+        <span class="text-metadata">({{game.losingPitcherWins}}-{{game.losingPitcherLosses}}, {{game.losingPitcherERA}} ERA)</span>
       </div>
     </div>
   </div>
-  {{#if model.hasSavePitcher}}
+
+  {{#if game.hasSavePitcher}}
     <div class="save-pitcher">
       <h5 class="text-label">Save</h5>
       <div class="player">
@@ -31,10 +33,11 @@
           <img src="assets/images/no-photo.png" class="no-photo" />
         </div>
         <div class="player-data">
-          <p class="text-content">{{format-name firstName=model.savePitcher.first lastName=model.savePitcher.last}}</p>
-          <span class="text-metadata">({{model.savePitcherSaves}})</span>
+          <p class="text-content">{{format-name firstName=game.savePitcher.first lastName=game.savePitcher.last}}</p>
+          <span class="text-metadata">({{game.savePitcherSaves}})</span>
         </div>
       </div>
     </div>
   {{/if}}
+
 </div>

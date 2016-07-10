@@ -8,11 +8,11 @@
     </div>
     <div class="player-metadata">
       <h3 class="heading-small">
-        <a href={{model.awayProbablePitcherURL}}>
-          {{format-name firstName=model.awayProbablePitcher.first lastName=model.awayProbablePitcher.last}}
+        <a href={{game.awayProbablePitcherURL}}>
+          {{format-name firstName=game.awayProbablePitcher.first lastName=game.awayProbablePitcher.last}}
         </a>
       </h3>
-      <p class="content-metadata">({{model.awayProbablePitcher.wins}}-{{model.awayProbablePitcher.losses}}, {{model.awayProbablePitcher.era}} ERA)</p>
+      <p class="content-metadata">({{game.awayProbablePitcher.wins}}-{{game.awayProbablePitcher.losses}}, {{game.awayProbablePitcher.era}} ERA)</p>
     </div>
   </div>
 
@@ -22,11 +22,11 @@
     </div>
     <div class="player-metadata">
       <h3 class="heading-small">
-        <a href={{model.homeProbablePitcherURL}}>
-          {{format-name firstName=model.homeProbablePitcher.first lastName=model.homeProbablePitcher.last}}
+        <a href={{game.homeProbablePitcherURL}}>
+          {{format-name firstName=game.homeProbablePitcher.first lastName=game.homeProbablePitcher.last}}
         </a>
       </h3>
-      <p class="text-metadata">({{model.homeProbablePitcher.wins}}-{{model.homeProbablePitcher.losses}}, {{model.homeProbablePitcher.era}} ERA)</p>
+      <p class="text-metadata">({{game.homeProbablePitcher.wins}}-{{game.homeProbablePitcher.losses}}, {{game.homeProbablePitcher.era}} ERA)</p>
     </div>
   </div>
 </div>

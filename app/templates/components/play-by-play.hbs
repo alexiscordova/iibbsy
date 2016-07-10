@@ -1,12 +1,11 @@
-{{#if model.isSideRetired}}
-  {{due-up-batters game=model}}
+{{#if game.isSideRetired}}
   {{due-up-batters game=game}}
 {{else}}
   <div class="container">
-      <div class="base third-base {{if model.isOnThirdBase 'active'}}"></div>
-      <div class="base second-base {{if model.isOnSecondBase 'active'}}"></div>
-      <div class="base first-base {{if model.isOnFirstBase 'active'}}"></div>
     <div class="diamond">
+      <div class="base third-base {{if game.isOnThirdBase 'on-base'}}"></div>
+      <div class="base second-base {{if game.isOnSecondBase 'on-base'}}"></div>
+      <div class="base first-base {{if game.isOnFirstBase 'on-base'}}"></div>
     </div>
 
     <div class="at-bat-count">
@@ -38,16 +37,16 @@
         </div>
       </div>
     </div>
-
   </div>
-  <div class="last-play">
-    <p class="text-content">
-      {{#if model.isCurrentlyDelayed}}
-        <strong>Delay</strong>: {{model.gameStatus.note}}
-      {{else if model.isBeingChallenged}}
-        <strong>Challenge</strong>: {{model.gameStatus.note}}
+
+  <div class="last-play small-hidden">
+    <p class="text-metadata">
+      {{#if game.isCurrentlyDelayed}}
+        <strong>Delay</strong>: {{game.gameStatus.note}}
+      {{else if game.isBeingChallenged}}
+        <strong>Challenge</strong>: {{game.gameStatus.note}}
       {{else}}
-        <strong>Last Play</strong>: {{model.playByPlay.last}}
+        <strong>Last Play</strong>: {{game.playByPlay.last}}
       {{/if}}
     </p>
   </div>

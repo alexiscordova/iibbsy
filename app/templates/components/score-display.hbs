@@ -37,53 +37,47 @@
   <tr class="opponent">
     <td class="away-team">
       <div class="image-container">
-        {{#if model.awayTeamLogo}}
-          <img src={{model.awayTeamLogo}} class="team-logo" />
+        {{#if game.awayTeamLogo}}
+          <img src={{game.awayTeamLogo}} class="team-logo" />
         {{/if}}
-        {{#unless model.awayTeamLogo}}
-          <img src="assets/images/no-photo.png" class="no-logo" />
-        {{/unless}}
       </div>
       <div class="team-metadata">
         <h3 class="heading-small">
-          {{model.awayTeamName}}
-          {{#if model.isInProgress}}
-            <span class="challenges {{if model.hasAwayChallengeRemaining 'active'}}" title="Remaining manager challenges: {{model.awayManagerChallenges}}"></span>
+          {{game.awayTeamName}}
+          {{#if game.isInProgress}}
+            <span class="manager-challenges {{if game.hasAwayChallengeRemaining 'has-challenge'}}" title="Remaining manager challenges: {{game.awayManagerChallenges}}"></span>
           {{/if}}
         </h3>
-        <p class="text-metadata">({{model.awayTeamWins}}-{{model.awayTeamLosses}})</p>
+        <p class="text-metadata">({{game.awayTeamWins}}-{{game.awayTeamLosses}})</p>
       </div>
     </td>
-    {{#if (or model.isWarmup model.isInProgress model.isGameCompleted)}}
-      <td class="total runs">{{model.awayTeamRuns}}</td>
-      <td class="total hits">{{model.awayTeamHits}}</td>
-      <td class="total errors">{{model.awayTeamErrors}}</td>
+    {{#if (or game.isWarmup game.hasGameStarted game.isDelayedStart game.isGameCompleted)}}
+      <td class="category-total runs text-content">{{game.awayTeamRuns}}</td>
+      <td class="category-total hits text-content">{{game.awayTeamHits}}</td>
+      <td class="category-total errors text-content">{{game.awayTeamErrors}}</td>
     {{/if}}
   </tr>
   <tr class="opponent">
     <td class="home-team">
       <div class="image-container">
-        {{#if model.homeTeamLogo}}
-          <img src={{model.homeTeamLogo}} class="team-logo" />
+        {{#if game.homeTeamLogo}}
+          <img src={{game.homeTeamLogo}} class="team-logo" />
         {{/if}}
-        {{#unless model.homeTeamLogo}}
-          <img src="assets/images/no-photo.png" class="no-logo" />
-        {{/unless}}
       </div>
       <div class="team-metadata">
         <h3 class="heading-small">
-          {{model.homeTeamName}}
-          {{#if model.isInProgress}}
-            <span class="challenges {{if model.hasHomeChallengesRemaining 'active'}}" title="Remaining manager challenges: {{model.homeManagerChallenges}}"></span>
+          {{game.homeTeamName}}
+          {{#if game.isInProgress}}
+            <span class="manager-challenges {{if game.hasHomeChallengesRemaining 'has-challenge'}}" title="Remaining manager challenges: {{game.homeManagerChallenges}}"></span>
           {{/if}}
         </h3>
-        <p class="text-metadata">({{model.homeTeamWins}}-{{model.homeTeamLosses}})</p>
+        <p class="text-metadata">({{game.homeTeamWins}}-{{game.homeTeamLosses}})</p>
       </div>
     </td>
-    {{#if (or model.isWarmup model.isInProgress model.isGameCompleted)}}
-      <td class="total runs">{{model.homeTeamRuns}}</td>
-      <td class="total hits">{{model.homeTeamHits}}</td>
-      <td class="total errors">{{model.homeTeamErrors}}</td>
+    {{#if (or game.isWarmup game.hasGameStarted game.isDelayedStart game.isGameCompleted)}}
+      <td class="category-total runs text-content">{{game.homeTeamRuns}}</td>
+      <td class="category-total hits text-content">{{game.homeTeamHits}}</td>
+      <td class="category-total errors text-content">{{game.homeTeamErrors}}</td>
     {{/if}}
   </tr>
 </tbody>
