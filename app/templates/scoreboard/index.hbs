@@ -1,15 +1,37 @@
 <article class="scoreboard">
   {{#each sortedGames as |game|}}
-    <section class="game" data-component="game">
-      {{score-display model=game}}
+    <section data-component="game">
+      <div class="flex-wrapper primary">
+        {{score-display game=game}}
 
-      {{#if (or game.isPreGame game.isPreview game.isWarmup)}}
-        {{game-probables model=game}}
-      {{else if (or game.isInProgress game.isBeingChallenged game.isCurrentlyDelayed)}}
-        {{play-by-play model=game}}
-      {{else if game.isGameCompleted}}
-        {{game-wrapup model=game}}
+        {{#if (and (not game.hasGameStarted game.isGameCompleted))}}
+          {{game-probables game=game}}
+        {{else if game.hasGameStarted}}
+          {{play-by-play game=game}}
+        {{else if game.isGameCompleted}}
+          {{game-wrapup game=game}}
+        {{/if}}
+      </div>
+
+      {{#if (or game.hasGameStarted game.isGameCompleted)}}
+        <div class="flex-wrapper small-hidden">
+          <div class="details">
+            <button>X</button>
+          </div>
+        </div>
       {{/if}}
+
+      {{#if (or game.hasGameStarted game.isGameCompleted)}}
+        <div class="details-drawer small-hidden">
+          <div class="box-score">
+            Box Score
+          </div>
+          <div class="current-matchup">
+            Current Matchup
+          </div>
+        </div>
+      {{/if}}
+
     </section>
   {{/each}}
 </article>
