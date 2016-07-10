@@ -54,16 +54,31 @@
 
 $screen-md: 40em; // 640px
 $screen-lg: 64em; // 1024px
+$screen-xl: $screen-lg;
 
 $breakpoints: (
+  small: null,
   medium: $screen-md,
-  large: $screen-lg
+  large: $screen-lg,
+  xlarge: $screen-xl
 );
 
 @mixin breakpoint($name) {
   @if map-has-key($breakpoints, $name) {
-    @media only screen and (min-width: map-get($breakpoints, $name)) {
-      @content;
+    @if $name == 'small' {
+      @media only screen and (max-width: map-get($breakpoints, $screen-md)) {
+        @content;
+      }
+    }
+    @else if $name == 'xlarge' {
+      @media only screen and (min-width: map-get($breakpoints, $name)) {
+        @content;
+      }
+    }
+    @else {
+      @media only screen and (min-width: map-get($breakpoints, $name)) {
+        @content;
+      }
     }
   }
   @else {
