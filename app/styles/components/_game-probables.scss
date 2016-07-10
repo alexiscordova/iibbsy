@@ -8,6 +8,11 @@
   @extend %flex-column;
   flex: 1;
 
+  // Header containing component title
+  .probables-header {
+    padding: 5px 0;
+  }
+
   .teams {
     @extend %flex-column;
     flex: 1;

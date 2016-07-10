@@ -6,6 +6,11 @@
   @extend %flex-column;
   flex: 1;
 
+  // Header containing component title
+  .due-up-header {
+    padding: 5px 0;
+  }
+
   .due-up-batters {
     @extend %flex-column;
     flex: 1;
