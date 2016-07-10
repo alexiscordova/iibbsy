@@ -1,11 +1,12 @@
 {{#if model.isSideRetired}}
   {{due-up-batters game=model}}
+  {{due-up-batters game=game}}
 {{else}}
   <div class="container">
-    <div class="diamond runners">
       <div class="base third-base {{if model.isOnThirdBase 'active'}}"></div>
       <div class="base second-base {{if model.isOnSecondBase 'active'}}"></div>
       <div class="base first-base {{if model.isOnFirstBase 'active'}}"></div>
+    <div class="diamond">
     </div>
 
     <div class="at-bat-count">
