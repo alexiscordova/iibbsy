@@ -4,3 +4,11 @@
 .block-center {
   margin: 0 auto;
 }
+
+.flex-wrapper {
+  @extend %flex-row;
+  flex: 1;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+}
+
