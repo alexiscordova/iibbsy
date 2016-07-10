@@ -24,10 +24,16 @@
         {{/if}}
       </h4>
     </th>
-    {{#if (or model.isWarmup model.isInProgress model.isGameCompleted)}}
-      <th class="category">R</th>
-      <th class="category">H</th>
-      <th class="category">E</th>
+    {{#if (or game.isWarmup game.isDelayedStart game.hasGameStarted game.isGameCompleted)}}
+      <th class="category-total text-content">
+        <abbr class="text-abbr text-bold" title="Total runs">R</abbr>
+      </th>
+      <th class="category-total text-content">
+        <abbr class="text-abbr text-bold" title="Total hits">H</abbr>
+      </th>
+      <th class="category-total text-content">
+        <abbr class="text-abbr text-bold" title="Total errors">E</abbr>
+      </th>
     {{/if}}
   </tr>
 </thead>
