@@ -1,30 +1,28 @@
 <thead class="linescore-header">
   <tr class="linescore-container">
     <th class="game-status">
-      {{#if (or model.isPreGame model.isPreview)}}
-        <h4 class="heading-component">{{model.gameTime}} <i>at {{model.venue}} in {{model.location}}</i></h4>
-      {{else if model.isWarmup}}
-        <h4 class="heading-component">Warmup</h4>
-      {{else if model.isInProgress}}
-        <h4 class="heading-component">{{model.currentInning}}</h4>
-      {{else if model.isCurrentlyDelayed}}
-        <h4 class="heading-component">
-          {{model.currentInning}} - <em>Delayed</em>
-        </h4>
-      {{else if model.isBeingChallenged}}
-        <h4 class="heading-component">
-          {{model.currentInning}} - <em>Managers Challenge</em>
-        </h4>
-      {{else if model.isGameCompleted}}
-        <h4 class="heading-component">
-          {{#if model.isExtraInnings}}
-            Final/{{model.finalInning}}
+      <h4 class="heading-component">
+        {{#if (or game.isPreGame game.isPreview)}}
+          {{game.gameTime}} at <em>{{game.venue}} in {{game.location}}</em>
+        {{else if game.isWarmup}}
+          Warmup
+        {{else if game.isInProgress}}
+          {{game.currentInning}}
+        {{else if game.isDelayedStart}}
+          <em>Delayed Start - {{game.gameStatus.reason}}</em>
+        {{else if game.isDelayed}}
+          {{game.currentInning}} - <em>Delayed</em>
+        {{else if game.isBeingChallenged}}
+          {{game.currentInning}} - <em>Managers Challenge</em>
+        {{else if game.isGameCompleted}}
+          {{#if game.isExtraInnings}}
+            Final/{{game.finalInning}}
           {{/if}}
-          {{#unless model.isExtraInnings}}
+          {{#unless game.isExtraInnings}}
             Final
           {{/unless}}
-        </h4>
-      {{/if}}
+        {{/if}}
+      </h4>
     </th>
     {{#if (or model.isWarmup model.isInProgress model.isGameCompleted)}}
       <th class="category">R</th>
