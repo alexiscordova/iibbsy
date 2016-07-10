@@ -3,8 +3,11 @@
 /*
   Cropped Image Mixin - Primarily used for player avatars, this mixin creates a consistent circular frame for images of any size, as well as centering the image in the frame.
 
+  Only one parameter ($width) is required; in this use case, $height will be set equal to $width, creating a perfect square. Both parameters can be set to unequal numbers to create rectangles.
+
   Defaults:
-  width, height: 50px
+  $width: 50px
+  $height: Equal to $width (50px)
 */
 
 %image-container {
@@ -16,12 +19,12 @@
 %avatar {
   position: relative;
   z-index: 1;
-  top: 25%;
-  left: -1.5%;
-  width: 105%;
+  top: 15%;
+  left: -11.5%;
+  width: 125%;
 }
 
-@mixin croppedImage($width: 50px, $height: 50px) {
+@mixin croppedImage($width: 50px, $height: $width) {
   & {
     width: $width;
     height: $height;
