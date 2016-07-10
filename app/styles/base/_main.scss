@@ -15,9 +15,13 @@ html {
 body {
   position: relative;
   z-index: 1;
-  padding: 0 25px;
+  padding: 0 15px;
   color: $true-black;
   background-color: #f1f2f3;
+
+  @include breakpoint(large) {
+    padding: 0 25px;
+  }
 
   // Ember.js adds a wrapper around the application template. This is not ideal.
   // TODO: If possible, add a custom class to style against.
@@ -29,9 +33,9 @@ body {
 }
 
 main {
-  flex: 1;
   position: relative;
   z-index: 1;
+  flex: 1;
   max-width: 1024px;
   width: 100%;
 }
