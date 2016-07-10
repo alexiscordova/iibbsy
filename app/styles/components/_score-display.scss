@@ -1,70 +1,107 @@
 /*
-  Score Display component - Displays the team names, wins and losses, and, if applicable, the score metadata associated with each game.
+  Score Display component - Displays the team names, team record (wins and losses), and, if applicable, the score metadata associated with each game (total runs, hits, and errors).
 
   Depending on the game status state, different content will appear:
-  - Default (Preview):
-  - Pre-Game:
-  - Warmup:
-  - In Progress:
-  - Final:
+  - Preview: The default status; displays team name and team record
+  - Pre-Game: Almost identical to Preview (thanks MLBAM)
+  - Warmup: Game starting shortly; displays scoreboard
+  - Delayed Start: Start delayed; text designation in the template
+  - In Progress: Game is underway; totals updating periodically
+  - Delayed: Started game is delayed; text designation in the template
+  - Managers Challenge: Manager is challenging a call on the field, play is haulted; text designation in the template
+  - Game Over: The final out has been recorded
+  - Final: The game is really over now, I'm not even joking this time
 */
 
+// Variables
+$spacing-right: 10px !default;
+$spacing-left: $spacing-right;
+
+// Component
 [data-component="score"] {
   @extend %flex-column;
   flex: 1;
-
-  .linescore-header {
-    margin-top: -7px;
-    margin-left: -10px;
-    padding-top: 7px;
-    padding-bottom: 5px;
-    padding-left: 10px;
-    border-bottom: 1px solid $true-black;
-  }
+  padding-right: $spacing-right;
+  padding-left: $spacing-left;
 
   .linescore-container {
     @extend %flex-row;
     flex: 1;
+    align-items: center;
+  }
+
+  // Team logos
+  .image-container {
+    width: 30px;
+    height: 30px;
+    @include breakpoint(medium) {
+      width: 45px;
+      height: 45px;
+    }
+
+    & + .team-metadata {
+      margin-left: 15px;
+    }
+  }
+
+  // Header containing date and venue, inning state, and game status
+  .linescore-header {
+    margin-right: -($spacing-right);
+    margin-left: -($spacing-left);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: $spacing-right;
+    padding-left: $spacing-left;
+    border-bottom: 1px solid $true-black;
+
     .game-status {
       flex: 2;
       text-align: left;
     }
-    .category {
-      width: 75px;
-      font-size: 12px;
-    }
   }
 
-  .opponents {
+  // Opponents
+  .game-opponents {
     @extend %flex-column;
     flex: 1;
     justify-content: space-around;
   }
-  .team {
+
+  .opponent {
     @extend %flex-row;
     flex: 1;
     align-items: center;
-    .away-team, .home-team {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    @include breakpoint(medium) {
+      margin: 0;
+    }
+
+    [class*="-team"] {
       @extend %flex-row;
-      align-items: center;
       flex: 2;
+      align-items: center;
     }
-    .total {
-      width: 75px;
-      font-size: 16px;
-      text-align: center;
+
+    .category-total {
+      font-size: 1.6rem;
     }
   }
 
-  .image-container {
-    width: 45px;
-    height: 45px;
-    img {
-      width: 100%;
+  // Score Header and Totals
+  .category-total {
+    width: 35px;
+    text-align: center;
+    @include breakpoint(medium) {
+      width: 45px;
+    }
+    @include breakpoint(large) {
+      width: 55px;
     }
   }
 
-  .challenges {
+  // Managers Challenges Indicator
+  .manager-challenges {
     display: inline-block;
     margin-top: -2px;
     margin-left: 5px;
@@ -77,8 +114,18 @@
     &:hover {
       cursor: help;
     }
-    &.active {
+
+    // Active indicator
+    &.has-challenge {
       background-color: yellow;
+    }
+  }
+
+  & + [data-component] {
+    border-top: 1px solid $true-black;
+    @include breakpoint(medium) {
+      border-top: none;
+      border-left: 1px solid $true-black;
     }
   }
 }
